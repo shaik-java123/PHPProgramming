@@ -1,0 +1,35 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], input[type=password] {
+  width: 20%;
+  padding: 10px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  align-content: center;
+  align-self: start;
+  box-sizing: border-box;
+}
+
+#frm {
+align-content: center;
+padding-left: 30%;
+padding-top: 10%;
+border: solid 10 px gray;
+
+}
+#btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 50px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
