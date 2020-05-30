@@ -4,7 +4,7 @@
 /*
 This is simple php program to check database
 table values exist or not as per to input form parameters and display message to user_error
-This method used here is object oriened
+This method used here is procedural style
 @author : Shaik
 
 **/
@@ -19,22 +19,22 @@ $password = stripcslashes($password);
 
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
 $sql = "SELECT username FROM users where username='$username'  and password='$password' ";
 
-$result = $conn->query($sql);
+$result = mysqli_query($conn, $sql);
 
-if ($result->num_rows > 0) {
+if (mysqli_num_rows($result) > 0) {
     // output data of each row
-    while ($row = $result->fetch_assoc()) {
-        echo "Login Successful , Welcome Mr " . $row['username'];
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<font color=green>Login Successful </font>, Welcome Mr " . $row['username'];
     }
 } else {
     echo "<font color=red>Login Failed for " . $username;
 }
-$conn->close();
+mysqli_close($conn);
 
 ?>
