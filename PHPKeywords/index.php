@@ -31,6 +31,20 @@ class Car {
   echo $herbie->model;
   echo "<br>";
   var_dump($herbie);
+  echo "<br>";
+  echo strlen("Hello world!");
+  echo "<br>";
+  echo str_word_count("Hello world!"); 
+  echo "<br>";
+  echo(rand());
+define("MSG"," Hi This is Moin", true);
+echo MSG;
+  define("cars", [
+    "Alfa Romeo",
+    "BMW",
+    "Toyota"
+  ]);
+  echo cars[0];
 
 
 ?>
