@@ -1,11 +1,12 @@
 <?php
 include("config.php");
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_POST['user'];
+$password = $_POST['pass'];
 
 $username = stripcslashes($username);
 
 $password = stripcslashes($password );
+
 
 //$con = mysqli_connect("localhost:8889","admin","mysql","login");
 
@@ -14,25 +15,23 @@ if (mysqli_connect_errno()) {
   exit();
 }
 
-
-$sql = "SELECT * FROM users";
-
-$result = mysqli_query($db, $sql);
-
-         
-             while($row = mysqli_fetch_assoc($result)) {
-               if($row["username"] == $username && $row["password"] == $password){
-                echo "Login Success , Welcome".$username;
-               }
-               else {
-                echo "Login Failed for ".$username;
-             }
-            } 
-           
-         
-         mysqli_close($db);
-
-
-
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+  
+  $sql = "SELECT username FROM users where username='$username'  and password='$password' ";
+  
+  $result = $conn->query($sql);
+  
+  if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+      echo "Login Successful , Welcome Mr " . $row['username'];
+    }
+  } else {
+    echo "<font color=red>Login Failed for ".$username;
+  }
+  $conn->close();
 
 ?>
