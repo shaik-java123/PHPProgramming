@@ -12,7 +12,12 @@ This method used here is procedural style
 include("config.php");
 $username = $_POST['user'];
 $password = $_POST['pass'];
+$nameErr ="";
+if (empty($_POST["user"])) {
+    $nameErr = "Name is required";
+  } 
 
+echo $nameErr;
 $username = stripcslashes($username);
 
 $password = stripcslashes($password);
